@@ -1,0 +1,94 @@
+<!--Dropdown menu for actions with the user-->
+<div class="row float-right dropdownToggleContainer">
+	<dropdown-toggle ng-show="vm.userEmail" close-on-click="true" pane-align="right">
+	  	<toggle>
+			<div class="customDropdownMenu">
+				<indicator ng-class="{'indicator-active': vm.getConnectionStatus()}" is-online="vm.getConnectionStatus()"></indicator>
+				<a class="dropdown button">{{vm.userEmail}}</a>
+			</div>
+	  	</toggle>
+	  	<pane>
+		    <ul class="menu vertical">
+		      	<li>
+		        	<a class="dropdown-toggle-menu" ng-click="vm.deleteUser();$close()">Delete my profile</a>
+		      	</li>
+		    </ul>
+	  	</pane>
+	</dropdown-toggle>
+</div>
+<!--Logout button-->
+<button class="button primary" ng-click="vm.logOut()" id="signout" >Log out</button>
+<!--Loader-->
+<div class="row" ng-hide="vm.contacts">
+	<div class="small-12">
+		<div class="loader"></div>
+	</div>
+</div>
+<!--Container for all contacts, search bar, etc.-->			
+<div class="row contactsShowing" ng-show="vm.contacts">
+	<div class="small-12 medium-7 large-5 medium-centered large-centered columns">
+		<!--Container for alert messages-->
+		<div class="row large-collapse">
+			<div class="small-12 medium-12 columns">
+				<alert ng-repeat="alert in vm.alerts" type="alert.type" close="vm.closeAlert($index)">{{alert.msg}}</alert>
+			</div>
+		</div>
+		<section id="contacts">
+			<header class="row medium-collapse">
+				<div class="small-12 columns">
+					<div ng-switch on="vm.contacts.length>0">
+						<h4 id="contactsHeader" ng-switch-when="true">Your Contacts ({{vm.contacts.length}})</h4>
+						<h4 id="contactsHeader" ng-switch-when="false">You have no contacts</h4>
+					</div>
+				</div>
+
+				<div class="row medium-collapse column">
+					<div class="small-9 medium-10 large-10 columns">
+						<div class="searchFieldContainer">
+							<input type="text" name="search" class="searchField" placeholder="Search contact..." ng-model="search.name">
+							<div class="clearFieldBtn" ng-show="search.name" ng-click="search.name=''" title="clear field">x</div>
+						</div>
+					</div>
+					<div class="small-3 medium-2 large-2 columns">
+						<a href="#!/main/new" class="button large btnRound" title="Add contact" ng-click="vm.addContactView()">+</a>
+					</div>
+				</div>
+			</header>
+			<!--Container for displaying contacts in the form of accordion-->
+			<div class="row">
+				<accordion close-others="vm.oneAtATime">
+					<accordion-group heading="{{contact.name}}" ng-repeat="contact in vm.contacts | filter: search" class="contact-item">
+						<accordion-heading>
+							<div class="row">
+								<div class="small-9 columns">
+									<p id="accHeading">{{contact.name}}</p>
+								</div>
+								<div class="small-3 columns">
+									<context-menu 
+												contact="contact" 
+												edit-contact="vm.editContact(contact)"
+												delete-contact="vm.removeContact(contact)"
+												>
+									</context-menu>
+								</div>
+							</div>
+				        </accordion-heading>
+			      		<ul class="editUList">
+							<li><strong>Company: </strong>{{contact.company}}</li> <hr>
+							<li><strong>Email Address: </strong>{{contact.email}}</li> <hr>
+							<li><strong>Phone Numbers: </strong></li>
+							<li><h7>Work: </h7>{{contact.work_phone}}</li>
+							<li><h7>Home: </h7>{{contact.home_phone}}</li>
+							<li><h7>Mobile: </h7>{{contact.mobile_phone}}</li><hr>
+							<li><strong>Location Info: </strong></li>
+							<li>Street: {{contact.street_address}}</li>
+							<li>City: {{contact.city}}</li>
+							<li>State: {{contact.state}}</li>
+							<li>Zip: {{contact.zipcode}}</li>
+						</ul>
+				    </accordion-group>
+			    </accordion>
+			</div>
+		</section>
+	</div>
+</div>

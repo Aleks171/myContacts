@@ -1,0 +1,1 @@
+angular.module('login', ['firebase', 'ngRoute', 'ngAnimate']);

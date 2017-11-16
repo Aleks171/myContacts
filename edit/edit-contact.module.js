@@ -1,0 +1,1 @@
+angular.module('editContact', ['ngRoute', 'firebase', 'ngAnimate']);

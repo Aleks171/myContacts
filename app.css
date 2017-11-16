@@ -1,0 +1,369 @@
+@import url('https://fonts.googleapis.com/css?family=Courgette');
+
+/*table {
+	border: 2px solid grey;
+}*/
+
+ul, li {
+  list-style: none;
+}
+
+li {
+  line-height: 200%;
+}
+
+.top-bar {
+  background-color: #222;
+  height: 100%;
+}
+
+.top-bar ul {
+  background-color: #222;
+}
+
+.menu-text {
+  color: white;
+  background-color: #222;
+  padding: 0;
+}
+
+.title-bar {
+  height: 100%;
+  width: 100%;
+}
+
+.title-bar-title {
+  margin-left: 3%;
+  display: inline-block;
+  width: 50%;
+}
+
+.title-bar-title a {
+  color: white;
+  text-decoration: none;
+}
+
+.accordion-title {
+  font-size: 1.25rem;
+  border: 2px solid grey;
+  padding: 2%;
+}
+
+p#accHeading {
+  margin-bottom: 0;
+  text-align: left;
+}
+
+.accordion-title:before {
+  display: none;
+}
+
+:last-child:not(.is-active)>.accordion-title {
+  border-bottom: 2px solid grey;
+}
+
+.icon-bar1 {
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+.icon-bar1 .bar {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background-color: grey;
+  margin: 5px auto;
+}
+
+.mes-bar {
+  width: 120px;
+  display: block;
+  position: absolute;
+  font-size: 1rem;
+  border: 2px solid white;
+  z-index: 1;
+  text-align: center;
+  background-color: white;
+  top: 138%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.mes-bar a {
+  display: inline-block;
+  padding: 15px 25px;
+  width: 100%;
+}
+
+.mes-bar a:first-child {
+  border-bottom: 1px dotted black;
+}
+
+.deleteBtn {
+  color: red;
+  padding: 15px 25px;
+  cursor: pointer;
+}
+
+.btnRound {
+  border-radius: 50%;
+  width: 55px;
+  margin-bottom: 20px;
+}
+
+.searchField {
+  width: 93%;
+  display: inline-block;
+  margin-top: 6px;
+}
+
+#contactsHeader, #contactHeader {
+  margin-top: 7%;
+  margin-bottom: 4%;
+}
+
+.editUList {
+  margin-left: 0px;
+}
+
+.appName {
+  font-family: 'Courgette', cursive, sans-serif;
+  text-decoration: none;
+  font-size: 1.7em;
+  padding-left: 0.5em !important;
+  font-weight: normal;
+  color: white;
+}
+
+.editForm [type=text] {
+  margin-bottom: 0.5em;
+}
+
+#loginForm {
+  margin-top: 5%;
+}
+
+.snackbar {
+  visibility: hidden;
+  min-width: 250px;
+  margin-left: -125px;
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  border-radius: 2px;
+  padding: 16px;
+  position: fixed;
+  z-index: 10;
+  left: 50%;
+  bottom: 30px;
+}
+
+#errorMsg {
+  color: red;
+}
+
+.loggedMsg {
+  display: block;
+  margin-top: 15%;
+  margin-bottom: 5%;
+  font-size: 1.6em;
+
+}
+
+#signoutButton {
+  display: block;
+  margin: 8% auto;
+  width: 50%;
+}
+
+.dropdown-pane {
+  width: 190px;
+  padding: 5px;
+}
+
+.dropdown-toggle-menu {
+  color: black;
+  background-color: white;
+  text-align: center;
+}
+
+#loginButton {
+  margin-right: 1%;
+}
+
+.myTooltip {
+  content: "";
+  position: absolute;
+  margin-left: -8px;
+  top: 76%;
+  left: 50%;
+  border-width: 8px;
+  border-style: solid;
+  border-color: transparent transparent grey transparent;
+}
+
+.loader {
+  border: 6px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 6px solid #3498db;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10%;
+}
+
+.indicator {
+  display: inline-block;
+  background-color: red;
+  border-radius: 50%;
+  width: 12px;
+  height: 12px;
+  margin-left: 10px;
+  margin-bottom: 3%;
+}
+
+.indicator-active {
+  background-color: lightgreen;
+}
+
+.customDropdownMenu {
+  background-color: #1779ba; 
+  height: 40px; 
+}
+
+.searchField, .clearFieldBtn {
+  display: inline-block;
+}
+
+.searchFieldContainer {
+  position: relative;
+}
+
+.clearFieldBtn {
+  color: darkgrey;
+  font-size: 20px;
+  position: absolute;
+  top: 15%;
+  right: 12%;
+  cursor: pointer;
+}
+
+/*
+
+////// Animations //////
+
+*/
+
+.showSnackbar {
+  visibility: visible; /* Show the snackbar */
+  -webkit-animation: fadein 0.5s, fadeout 0.5s 4s;
+  animation: fadein 0.5s, fadeout 0.5s 4s;
+}
+
+@keyframes fadein {
+  from {bottom: 0; opacity: 0;}
+  to {bottom: 30px; opacity: 1;}
+}
+
+@keyframes fadeout {
+  from {bottom: 30px; opacity: 1;}
+  to {bottom: 0; opacity: 0;}
+}
+
+/*inputLbl class for input transitions in login form*/
+.inputLbl-add, .inputLbl-remove {
+  transition: all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;
+}
+
+.inputLbl, .inputLbl-add.inputLbl-add-active {
+  font-size: 2.0em;
+}
+
+.inputLbl-remove.inputLbl-remove-active {
+  font-size: inherited;
+}
+
+.contact-item.ng-enter,
+.contact-item.ng-leave,
+.contact-item.ng-move {
+  transition: 0.5s linear all;
+}
+
+.contact-item.ng-enter,
+.contact-item.ng-move {
+  height: 0px;
+  opacity: 0;
+  overflow: hidden;
+}
+
+.contact-item.ng-enter.ng-enter-active,
+.contact-item.ng-move.ng-move-active {
+  height: 60px;
+  opacity: 1;
+}
+
+.contact-item.ng-leave {
+  opacity: 1;
+  height: 60px;
+  overflow: hidden;
+}
+
+.contact-item.ng-leave.ng-leave-active {
+  height: 0px;
+  opacity: 0; 
+}
+
+.view-container {
+  position: relative;
+}
+
+.view-frame.ng-enter,
+.view-frame.ng-leave {
+  background: white;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.view-frame.ng-enter {
+  animation: 0.6s fade-in;
+  z-index: 100;
+}
+
+.view-frame.ng-leave {
+  animation: 0.6s fade-out;
+  z-index: 99;
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes fade-out {
+  from { opacity: 1; }
+  to   { opacity: 0; }
+}
+
+.accordion-content {
+  overflow: hidden;
+  max-height: 499px;
+  transition: 0.2s all ease-in-out; 
+}
+
+.accordion-content.ng-hide {
+  max-height: 0; 
+}
+
+.accordion-content.ng-hide-add, .accordion-content.ng-hide-remove {
+  display: none; 
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}

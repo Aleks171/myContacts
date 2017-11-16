@@ -1,0 +1,69 @@
+<form ng-submit="tc.addContact()" class="editForm">
+	<div class="row column"><h3 id="contactHeader">{{tc.formHeader}}</h3></div>
+	<div class="row">
+		<div class="medium-6 large-6 columns">
+			<label>Name:
+				<input type="text" ng-model="tc.contact.name" placeholder="Contact Name" required>
+			</label>
+		</div>
+		<div class="medium-6 large-6 columns">
+			<label>Email:
+				<input type="email" ng-model="tc.contact.email" placeholder="Contact Email">
+			</label>
+		</div>
+	</div>
+	<div class="row">
+		<div class="medium-6 large-6 columns">
+			<label>Company:
+				<input type="text" ng-model="tc.contact.company" placeholder="Company Name">
+			</label>
+		</div>
+		<div class="medium-6 large-6 columns">
+			<label>Work Phone:
+				<input type="number" ng-model="tc.contact.work_phone" placeholder="Work Phone">
+			</label>
+		</div>
+	</div>
+	<div class="row">
+		<div class="medium-6 large-6 columns">
+			<label>Mobile Phone:
+				<input type="number" ng-model="tc.contact.mobile_phone" placeholder="Mobile Phone">
+			</label>
+		</div>
+		<div class="medium-6 large-6 columns">
+			<label>Home Phone:
+				<input type="number" ng-model="tc.contact.home_phone" placeholder="Home Phone">
+			</label>
+		</div>
+	</div>
+	<div class="row">
+		<div class="medium-6 large-6 columns">
+			<label>Street Address:
+				<input type="text" ng-model="tc.contact.street_address" placeholder="Street Address">
+			</label>
+		</div>
+		<div class="medium-6 large-6 columns">
+			<label>City:
+				<input type="text" ng-model="tc.contact.city" placeholder="City">
+			</label>
+		</div>
+	</div>
+	<div class="row">
+		<div class="medium-6 large-6 columns">
+			<label>State:
+				<input type="text" ng-model="tc.contact.state" placeholder="state">
+			</label>
+		</div>
+		<div class="medium-6 large-6 columns">
+			<label>Zip Code:
+				<input type="number" ng-model="tc.contact.zipcode" placeholder="Zip Code">
+			</label>
+		</div>
+	</div>
+	<div class="row">
+		<div class="large-12 columns">
+			<button type="submit" class="button">{{tc.buttonDescription}}</button>
+			<a href="#!/main" class="button secondary">Back</a>
+		</div>
+	</div>
+</form>
