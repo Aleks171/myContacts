@@ -1,12 +1,12 @@
 angular.module('newContact')
-.controller('NewCtrl', ['notificationMessages', 'contacts', '$location', function(notificationMessages, contacts, $location) {
+.controller('NewCtrl', ['notificationMessages', 'contacts', '$location', 'alerts', function(notificationMessages, contacts, $location, alerts) {
 	var vm = this,
 	contactsFromService = contacts.getContactsArray().$loaded()
 	.then(function(data) {
 		vm.contacts = data;
 	})
 	.catch(function(error) {
-		notificationMessages.addNotification('Sorry, error occurred');
+		alerts.addAlert(error.message);
 	});
 	// Submit Contact
 	vm.addFormSubmit = function() {

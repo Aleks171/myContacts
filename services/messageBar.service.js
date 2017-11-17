@@ -1,5 +1,5 @@
 angular.module('services')
-.service('messageBar', [ function() {
+.service('messageBar', function() {
 	var currentMessageBar = null;
 	this.addMessageBar = function(newMessageBar) {
 		//Check if current message bar exist
@@ -39,4 +39,4 @@ angular.module('services')
 	this.setCurrentMessageBar = function(newMessageBar) {
 		return currentMessageBar = newMessageBar;
 	}
- }]);
+ });

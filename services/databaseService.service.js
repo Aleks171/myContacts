@@ -1,7 +1,9 @@
 angular.module('services')
 .factory('database', ['$q', function ($q) {
 	var connectionStatus = {},
+	//database connection status info
 	connectedRef = firebase.database().ref('.info/connected');
+	//attach event listener for database connection status change
 	connectedRef.on('value', function(snap) {
   		if (snap.val() === true) {
 	    	setStatus(snap.val());

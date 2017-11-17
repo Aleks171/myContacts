@@ -6,7 +6,6 @@ angular.module('editContact')
 	.then(function(data) {
 		vm.contacts = data;
 		vm.contact = contacts.getContactById(contactId);
-		console.log("Contacts from EditCtrl: ", vm.contacts);
 	})
 	.catch(function(error) {
 		alerts.addAlert(error.message);
@@ -22,7 +21,6 @@ angular.module('editContact')
 	      	$location.path('/main');
 	    })
 	    .catch(function(error) {
-	      	console.log(error);
 	      	notificationMessages.addNotification('Sorry, error occurred!');
 	    });
   	}

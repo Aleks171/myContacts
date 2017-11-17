@@ -1,40 +1,38 @@
 <!--Top container for authentication form-->
 <div class="row column">
   <div class="small-12 medium-10 medium-centered columns">
-
-  <form id="loginForm" ng-hide="vm.currentAuth" name="loginForm">
-    <div class="row">
-      <div class="small-12 medium-6 columns">
-        <label><h5 ng-class="varCss1">E-mail</h5></label>
-        <input type="email" ng-model="vm.user.email" placeholder="Your E-mail" ng-focus="varCss1='inputLbl';vm.error=''" ng-blur="varCss1=''" required>
+    <form id="loginForm" ng-hide="vm.currentAuth" name="loginForm">
+      <div class="row">
+        <div class="small-12 medium-6 columns">
+          <label><h5 ng-class="varCss1">E-mail</h5></label>
+          <input type="email" ng-model="vm.user.email" placeholder="Your E-mail" ng-focus="varCss1='inputLbl';vm.error=''" ng-blur="varCss1=''" required>
+        </div>
+        <div class="small-12 medium-6 columns">
+          <label><h5 ng-class="varCss2">Password</h5></label>
+          <input type="password" name="password" ng-model="vm.user.password" minlength="6" placeholder="Your password" ng-focus="varCss2='inputLbl';vm.error=''" ng-blur="varCss2=''" required>
+          <p ng-show="loginForm.password.$invalid">Password length should be at least 6 characters.</p>
+        </div>
       </div>
-      <div class="small-12 medium-6 columns">
-        <label><h5 ng-class="varCss2">Password</h5></label>
-        <input type="password" name="password" ng-model="vm.user.password" minlength="6" placeholder="Your password" ng-focus="varCss2='inputLbl';vm.error=''" ng-blur="varCss2=''" required>
-        <p ng-show="loginForm.password.$invalid">Password length should be at least 6 characters.</p>
+      <div class="row column">
+        <button id="loginButton" type="submit" class="button primary" ng-hide="vm.currentUser" ng-click="vm.logIn()" ng-disabled="loginForm.$invalid">
+          Log In
+        </button>
+        <button class="button secondary" ng-hide="vm.currentUser" ng-click="vm.signUp()" id="signup" ng-disabled="loginForm.$invalid">
+          Sign Up
+        </button>
       </div>
-    </div>
+    </form>
+    <!--Error messages-->
+    <p id="errorMsg">{{vm.error}}</p>
+    <!--This is shown on the login page, when user's logged-in-->
     <div class="row column">
-      <button id="loginButton" type="submit" class="button primary" ng-hide="vm.currentUser" ng-click="vm.logIn()" ng-disabled="loginForm.$invalid">
-        Log In
-      </button>
-      <button class="button secondary" ng-hide="vm.currentUser" ng-click="vm.signUp()" id="signup" ng-disabled="loginForm.$invalid">
-        Sign Up
-      </button>
+      <div class="small-10 medium-8 large-4 small-centered large-centered columns text-center">
+        <div ng-show="vm.currentAuth">
+          <span class="loggedMsg">You're already logged in!</span>
+          <a href="#!/main">Go to contacts</a>
+          <!--<button class="button primary" ng-click="vm.logOut()" id="signoutButton" href="#">Log out</button>-->
+        </div>
+      </div> 
     </div>
-  </form>
-  <!--Error messages-->
-  <p id="errorMsg">{{vm.error}}</p>
-  <!--This is shown on the login page, when user's logged-in-->
-  <div class="row column">
-    <div class="small-10 medium-8 large-4 small-centered large-centered columns text-center">
-      <div ng-show="vm.currentAuth">
-        <span class="loggedMsg">You're already logged in!</span>
-        <a href="#!/main">Go to contacts</a>
-        <!--<button class="button primary" ng-click="vm.logOut()" id="signoutButton" href="#">Log out</button>-->
-      </div>
-    </div> 
-  </div>
-
   </div>
 </div> 
