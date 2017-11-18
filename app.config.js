@@ -9,8 +9,8 @@ angular.module('config', ['ngRoute'])
 })
 .run(['$rootScope', '$location', 'configFirebase', function($rootScope, $location, configFirebase) {
   $rootScope.$on('$routeChangeError', function(event, next, previous, error) {
-    // We can catch the error thrown when the $requireSignIn promise is rejected
-    // and redirect the user back to the home page
+    //We can catch the error thrown when the $requireSignIn promise is rejected
+    //and redirect the user back to the home page
     if (error === 'AUTH_REQUIRED') {
       $location.path('/login');
     }
@@ -27,9 +27,9 @@ angular.module('config', ['ngRoute'])
 		    controller: 'LoginCtrl',
         controllerAs: 'vm',
         resolve: {
-          // controller will not be loaded until $waitForSignIn resolves
+          //controller will not be loaded until $waitForSignIn resolves
           'currentAuth': ['Auth', function(Auth) {
-          // $waitForSignIn returns a promise so the resolve waits for it to complete
+          //$waitForSignIn returns a promise so the resolve waits for it to complete
           return Auth.getAuth().$waitForSignIn();
           }]
   		  }
@@ -39,11 +39,17 @@ angular.module('config', ['ngRoute'])
         controller: 'MainCtrl',
         controllerAs: 'vm',
         resolve: {
-          // controller will not be loaded until $requireSignIn resolves
+          //controller will not be loaded until $requireSignIn resolves
           "currentAuth": ['Auth', function(Auth) {
-          // $requireSignIn returns a promise so the resolve waits for it to complete
-          // If the promise is rejected, it will throw a $routeChangeError (see above)
-          return Auth.getAuth().$requireSignIn();
+            //$requireSignIn returns a promise so the resolve waits for it to complete
+            //If the promise is rejected, it will throw a $routeChangeError (see above)
+            return Auth.getAuth().$requireSignIn();
+          }],
+          //this is to prevent UI(accordion) flickering when the contacts aren't fetched yet
+          "contactsResolve": ['contacts', 'Auth', function(contacts, Auth) {
+            return Auth.getAuth().$requireSignIn()
+              .then(function() {return contacts.getContactsArray().$loaded();})
+              //return contacts.getContactsArray().$loaded();
           }]
         }
       })
@@ -52,10 +58,7 @@ angular.module('config', ['ngRoute'])
         controller: 'EditCtrl',
         controllerAs: 'vm',
         resolve: {
-          // controller will not be loaded until $requireSignIn resolves
           "currentAuth": ['Auth', function(Auth) {
-          // $requireSignIn returns a promise so the resolve waits for it to complete
-          // If the promise is rejected, it will throw a $routeChangeError (see above)
           return Auth.getAuth().$requireSignIn();
           }]
         }
@@ -65,10 +68,7 @@ angular.module('config', ['ngRoute'])
         controller: 'NewCtrl',
         controllerAs: 'vm',
         resolve: {
-          // controller will not be loaded until $requireSignIn resolves
           "currentAuth": ['Auth', function(Auth) {
-          // $requireSignIn returns a promise so the resolve waits for it to complete
-          // If the promise is rejected, it will throw a $routeChangeError (see above)
           return Auth.getAuth().$requireSignIn();
           }]
         }

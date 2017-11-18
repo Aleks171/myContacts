@@ -31,6 +31,7 @@ angular.module('login')
       .then(function(firebaseUser) {
         notificationMessages.addNotification('Your account has been successfully created!');
         database.addUserToDatabase(firebaseUser);
+        console.log('firebaseUser: ', firebaseUser);
         $timeout(function(){$location.path('/main');}, 5000);
       })
       .catch(function(error) {

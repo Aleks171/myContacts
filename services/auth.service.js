@@ -41,5 +41,11 @@ angular.module('services')
 		if (getCurrentAuthenticatedUser()) {
 			return getCurrentAuthenticatedUser().uid;
 		}
+		else {
+			throw new Error("Problem with Auth");
+			//return 'iClUugCqgMUiRy8hbKWgCJx9YQU2';
+		}
+		//console.log('currentUser ', currentAuth);
+		//return 'iClUugCqgMUiRy8hbKWgCJx9YQU2';
 	}
 }]);
