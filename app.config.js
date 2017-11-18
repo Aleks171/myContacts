@@ -49,7 +49,6 @@ angular.module('config', ['ngRoute'])
           "contactsResolve": ['contacts', 'Auth', function(contacts, Auth) {
             return Auth.getAuth().$requireSignIn()
               .then(function() {return contacts.getContactsArray().$loaded();})
-              //return contacts.getContactsArray().$loaded();
           }]
         }
       })
