@@ -229,6 +229,10 @@ p#accHeading {
   background-color: #1779ba; 
   height: 40px; 
 }
+/*Removes clear field "x" button in IE*/
+.searchField::-ms-clear {
+   display: none;
+}
 
 .searchField, .clearFieldBtn {
   display: inline-block;
