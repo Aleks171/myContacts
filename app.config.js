@@ -1,12 +1,7 @@
 angular.module('config', ['ngRoute'])
 .constant('configFirebase', 
-{
-  apiKey: 'AIzaSyA9ykPhKrGwcNv5jBY56uYdSl-9oNv9pXE',
-  authDomain: 'mycontacts-app-30c48.firebaseapp.com',
-  databaseURL: 'https://mycontacts-app-30c48.firebaseio.com',
-  storageBucket: 'mycontacts-app-30c48.appspot.com',
-  messagingSenderId: '282654169506'
-})
+/* Place for firebase configuration object */
+)
 .run(['$rootScope', '$location', 'configFirebase', function($rootScope, $location, configFirebase) {
   $rootScope.$on('$routeChangeError', function(event, next, previous, error) {
     //We can catch the error thrown when the $requireSignIn promise is rejected
